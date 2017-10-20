@@ -1,5 +1,6 @@
 import React from 'react';
 import { translate } from 'react-i18next';
+import i18n from 'i18n';
 
 const SignupPage = ({ t }) => (
   <div>
@@ -11,5 +12,5 @@ const SignupPage = ({ t }) => (
 //
 // };
 
-const SignupPageT = translate('signup')(SignupPage);
-export default SignupPageT
+export default translate('signup', { i18n } )(SignupPage);
+// export default translate('signup')(SignupPage);

@@ -3,7 +3,7 @@ const XHR = require('i18next-xhr-backend')
 const LanguageDetector = require('i18next-browser-languagedetector')
 
 const options = {
-  fallbackLng: 'de',
+  fallbackLng: 'en',
   load: 'languageOnly', // we only provide en, de -> no region specific locals like en-US, de-DE
 
   // have a common namespace used around the full app
@@ -21,6 +21,11 @@ const options = {
       return value
     }
   }
+
+  // react: {
+  //   wait: false,
+  //   nsMode: 'default'
+  // }
 }
 
 // for browser use xhr backend to load translations and browser lng detector
@@ -31,7 +36,6 @@ if (process.browser) {
     .use(LanguageDetector)
 }
 
-console.log('I18N OPTIONS', options);
 // initialize if not already initialized
 if (!i18n.isInitialized) i18n.init(options)
 

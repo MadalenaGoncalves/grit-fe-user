@@ -1,12 +1,14 @@
 import React from 'react';
+import { translate } from 'react-i18next';
 
-const Footer = (props) => (
+
+const Footer = ({ t }) => (
   <div>
-    this is the footer
+    {t('pureComponent')}
   </div>
 );
 
 Footer.propTypes = {
 };
 
-export default Footer;
+export default translate('common')(Footer);

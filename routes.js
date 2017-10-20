@@ -12,11 +12,11 @@ const routes = nextRoutes();
 //   page - Page inside ./pages to be rendered
 
 routes
-// .add('/:lang(de|en)', '')
-.add('/signup', 'SignupPage')
-.add('/login', 'Login')
-.add('/user', 'ProfilePage')
-.add('/event', 'EventDetailPage')
+// .add('/:lng(de|en)', '')
+.add('signup'  ,'/signup',  'SignupPage')
+.add('login'   ,'/login',   'Login')
+.add('profile' ,'/profile', 'ProfilePage')
+.add('workout' ,'/wokout',  'EventDetailPage')
 
 // .add('blog', '/blog/:slug')
 // .add('user', '/user/:id', 'profile')

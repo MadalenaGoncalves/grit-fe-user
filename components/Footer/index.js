@@ -4,7 +4,7 @@ import { translate } from 'react-i18next';
 
 const Footer = ({ t }) => (
   <div>
-    {t('pureComponent')}
+    I'm the FOOTER: {t('pureComponent')}
   </div>
 );
 

@@ -2,13 +2,39 @@ const i18n = require('i18next')
 const XHR = require('i18next-xhr-backend')
 const LanguageDetector = require('i18next-browser-languagedetector')
 
+const detectionOptions = {
+  // order and from where user language should be detected
+  order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag'],
+
+  // keys or params to lookup language from
+  lookupQuerystring: 'lng',
+  lookupCookie: 'lng', //'i18next',
+  lookupLocalStorage: 'lng', //'i18nextLng',
+
+  // cache user language on
+  // caches: ['localStorage', 'cookie'],
+  // excludeCacheFor: ['cimode'], // languages to not persist (cookie, localStorage)
+
+  // optional expire and domain for set cookie
+  // cookieMinutes: 10,
+  // cookieDomain: 'myDomain',
+
+  // optional htmlTag with lang attribute, the default is:
+  // htmlTag: document.documentElement
+};
+
 const options = {
   fallbackLng: 'en',
-  load: 'languageOnly', // we only provide en, de -> no region specific locals like en-US, de-DE
+  // given 'en-US': 'all' --> ['en-US', 'en', 'dev'], 'currentOnly' --> 'en-US', 'languageOnly' --> 'en'
+  load: 'languageOnly', // no region specific locals like en-US, de-DE (only en, de)
+  whitelist: ['en','de'],
+  nonExplicitWhitelist: false, // if true will pass eg. en-US if finding en in whitelist
 
   // have a common namespace used around the full app
-  ns: ['common'],
+  // ns: [ 'common', 'home', 'login', 'signup', 'workout', 'user' ],
+  ns: 'common',
   defaultNS: 'common',
+  fallbackNS: false,
 
   debug: true,
   saveMissing: true,
@@ -20,7 +46,9 @@ const options = {
       if (format === 'uppercase') return value.toUpperCase()
       return value
     }
-  }
+  },
+
+  detection: detectionOptions,
 
   // react: {
   //   wait: false,
